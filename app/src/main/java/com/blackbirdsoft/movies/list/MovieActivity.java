@@ -184,7 +184,7 @@ public class MovieActivity extends AppCompatActivity implements ListItemClickLis
     }
 
     @Override
-    public void onMovieLoadingBegin(MoviesListType type) {
+    public void onLoadingBegin(MoviesListType type) {
         showLoading();
     }
 
@@ -195,7 +195,7 @@ public class MovieActivity extends AppCompatActivity implements ListItemClickLis
     }
 
     @Override
-    public void onMovieLoadingEnd(MoviesListType type, MoviesList moviesList) {
+    public void onLoadingEnd(MoviesListType type, MoviesList moviesList) {
         if (moviesList == null || moviesList.getResults() == null || moviesList.getResults().size() == 0) {
             Log.d(TAG, "got empty result");
             showError(type == MoviesListType.FAVOURITES || App.isInternetAvailable() ? R.string.error_no_results : R.string.error_no_connection);

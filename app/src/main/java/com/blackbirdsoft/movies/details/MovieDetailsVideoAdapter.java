@@ -21,13 +21,13 @@ class MovieDetailsVideoAdapter extends RecyclerView.Adapter<MovieDetailsVideoVie
     }
 
     @Override
-    public void onMovieLoadingBegin(Movie type) {
-        this.mVideoList = null;
-        notifyDataSetChanged();
+    public void onLoadingBegin(Movie type) {
     }
 
     @Override
-    public void onMovieLoadingEnd(Movie type, MovieDetailsVideoList videoList) {
+    public void onLoadingEnd(Movie type, MovieDetailsVideoList videoList) {
+        if (mVideoList != null && mVideoList.equals(videoList))
+            return;
         this.mVideoList = videoList;
         notifyDataSetChanged();
     }

@@ -31,14 +31,14 @@ class MoviesManager implements LoadingTaskListener<MoviesList> {
     @Override
     public void onPreExecute() {
         for (LoadingListener<MoviesListType, MoviesList> listener : mListeners) {
-            listener.onMovieLoadingBegin(mListType);
+            listener.onLoadingBegin(mListType);
         }
     }
 
     @Override
     public void onPostExecute(MoviesList moviesList) {
         for (LoadingListener<MoviesListType, MoviesList> listener : mListeners) {
-            listener.onMovieLoadingEnd(mListType, moviesList);
+            listener.onLoadingEnd(mListType, moviesList);
         }
     }
 }

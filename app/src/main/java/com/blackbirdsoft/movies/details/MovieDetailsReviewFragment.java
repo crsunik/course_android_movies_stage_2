@@ -88,12 +88,12 @@ public class MovieDetailsReviewFragment extends Fragment implements ListItemClic
     }
 
     @Override
-    public void onMovieLoadingBegin(Movie input) {
+    public void onLoadingBegin(Movie input) {
         showLoading();
     }
 
     @Override
-    public void onMovieLoadingEnd(Movie input, MovieDetailsReviewList result) {
+    public void onLoadingEnd(Movie input, MovieDetailsReviewList result) {
         mReviewList = result;
         if (result == null || result.getResults() == null || result.getResults().size() == 0) {
             showError(App.isInternetAvailable() ? R.string.error_no_results : R.string.error_no_connection);

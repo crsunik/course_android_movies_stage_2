@@ -21,13 +21,13 @@ class MovieDetailsReviewAdapter extends RecyclerView.Adapter<MovieDetailsReviewV
     }
 
     @Override
-    public void onMovieLoadingBegin(Movie movie) {
-        this.mMovieDetailsReviewList = null;
-        notifyDataSetChanged();
+    public void onLoadingBegin(Movie movie) {
     }
 
     @Override
-    public void onMovieLoadingEnd(Movie movie, MovieDetailsReviewList reviewList) {
+    public void onLoadingEnd(Movie movie, MovieDetailsReviewList reviewList) {
+        if (mMovieDetailsReviewList != null && mMovieDetailsReviewList.equals(reviewList))
+            return;
         this.mMovieDetailsReviewList = reviewList;
         notifyDataSetChanged();
     }

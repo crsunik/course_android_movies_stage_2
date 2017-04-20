@@ -31,14 +31,14 @@ class MovieDetailsReviewManager implements LoadingTaskListener<MovieDetailsRevie
     @Override
     public void onPreExecute() {
         for (LoadingListener<Movie, MovieDetailsReviewList> listener : mListeners) {
-            listener.onMovieLoadingBegin(mMovie);
+            listener.onLoadingBegin(mMovie);
         }
     }
 
     @Override
     public void onPostExecute(MovieDetailsReviewList moviesList) {
         for (LoadingListener<Movie, MovieDetailsReviewList> listener : mListeners) {
-            listener.onMovieLoadingEnd(mMovie, moviesList);
+            listener.onLoadingEnd(mMovie, moviesList);
         }
     }
 }

@@ -100,12 +100,12 @@ public class MovieDetailsVideoFragment extends Fragment implements ListItemClick
     }
 
     @Override
-    public void onMovieLoadingBegin(Movie input) {
+    public void onLoadingBegin(Movie input) {
         showLoading();
     }
 
     @Override
-    public void onMovieLoadingEnd(Movie input, MovieDetailsVideoList result) {
+    public void onLoadingEnd(Movie input, MovieDetailsVideoList result) {
         mVideoList = result;
         if (result == null || result.getResults() == null || result.getResults().size() == 0) {
             showError(App.isInternetAvailable() ? R.string.error_no_results : R.string.error_no_connection);

@@ -16,7 +16,7 @@ public class Movie implements Parcelable {
         UNKNOWN, FAVOURITE, NOT_FAVOURITE
     }
 
-    static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
+    public static final Parcelable.Creator<Movie> CREATOR = new Parcelable.Creator<Movie>() {
         public Movie createFromParcel(Parcel source) {
             return new Movie(source);
         }

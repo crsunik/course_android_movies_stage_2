@@ -31,14 +31,14 @@ class MovieDetailsVideoManager implements LoadingTaskListener<MovieDetailsVideoL
     @Override
     public void onPreExecute() {
         for (LoadingListener<Movie, MovieDetailsVideoList> listener : mListeners) {
-            listener.onMovieLoadingBegin(mMovie);
+            listener.onLoadingBegin(mMovie);
         }
     }
 
     @Override
     public void onPostExecute(MovieDetailsVideoList moviesList) {
         for (LoadingListener<Movie, MovieDetailsVideoList> listener : mListeners) {
-            listener.onMovieLoadingEnd(mMovie, moviesList);
+            listener.onLoadingEnd(mMovie, moviesList);
         }
     }
 }

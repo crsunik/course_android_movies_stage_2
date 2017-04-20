@@ -59,16 +59,18 @@ public class MovieDetailsActivity extends AppCompatActivity implements TabLayout
         }
 
         Intent intent = getIntent();
-        mMovie = intent.getParcelableExtra(MOVIE_DETAILS);
-        setTitle(mMovie.getOriginalTitle());
-        switchFavouriteBtnState(mMovie.getFavourite());
-        initTabs();
-        mFavouriteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                toggleFavourite();
-            }
-        });
+        if (intent != null && intent.hasExtra(MOVIE_DETAILS)) {
+            mMovie = intent.getParcelableExtra(MOVIE_DETAILS);
+            setTitle(mMovie.getOriginalTitle());
+            switchFavouriteBtnState(mMovie.getFavourite());
+            initTabs();
+            mFavouriteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    toggleFavourite();
+                }
+            });
+        }
     }
 
     private void switchFavouriteBtnState(Movie.FavouriteState favourite) {

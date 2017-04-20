@@ -2,15 +2,16 @@ package com.blackbirdsoft.movies.list;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.blackbirdsoft.movies.utils.ListItemClickListener;
-import com.blackbirdsoft.movies.utils.LoadingListener;
 import com.blackbirdsoft.movies.R;
 import com.blackbirdsoft.movies.domain.Movie;
 import com.blackbirdsoft.movies.domain.MoviesList;
+import com.blackbirdsoft.movies.utils.ListItemClickListener;
+import com.blackbirdsoft.movies.utils.LoadingListener;
 
 class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> implements LoadingListener<MoviesListType, MoviesList> {
 
@@ -22,13 +23,15 @@ class MovieAdapter extends RecyclerView.Adapter<MovieViewHolder> implements Load
     }
 
     @Override
-    public void onMovieLoadingBegin(MoviesListType type) {
-        this.mMoviesList = null;
-        notifyDataSetChanged();
+    public void onLoadingBegin(MoviesListType type) {
+
     }
 
     @Override
-    public void onMovieLoadingEnd(MoviesListType type, MoviesList moviesList) {
+    public void onLoadingEnd(MoviesListType type, MoviesList moviesList) {
+        //in rare cases movie loading can be unnecessary - we ignore the load
+        if (mMoviesList != null && mMoviesList.equals(moviesList))
+            return;
         this.mMoviesList = moviesList;
         notifyDataSetChanged();
     }
